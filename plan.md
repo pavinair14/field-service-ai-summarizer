@@ -38,7 +38,7 @@ Build a small CLI service summary application that reads field-service reports, 
 
 ### 3.1 Safe-by-default summarisation
 
-The backend should treat redaction and safety as the highest-priority rules. It should implement allowlisted content generation: only customer-safe facts are included and all personal or access-related details are excluded.
+The summarizer should treat redaction and safety as the highest-priority rules. It should implement allowlisted content generation: only customer-safe facts are included and all personal or access-related details are excluded.
 
 ### 3.2 Category-based protection, not exact-string matching
 
@@ -119,7 +119,7 @@ Mitigation: keep credentials in environment variables, return a record-level fol
 ## 6. Delivery phases
 
 1. Define the CLI output contract and structured summary schema, including the asset reference, all required summary sections, status, and customer-facing caveat fields.
-2. Implement the backend summarisation pipeline and data validation.
+2. Implement the summarisation pipeline and data validation.
 3. Implement category-based security redaction and prompt-injection safeguards before model calls.
 4. Implement the LLM client, structured prompt, response validation, and deterministic fallback behavior.
 5. Implement the deterministic CLI and output writers.
@@ -131,7 +131,7 @@ Mitigation: keep credentials in environment variables, return a record-level fol
 
 The project will be considered on track when:
 
-- the backend can process the input JSONL reports,
+- the summarizer can process the input JSONL reports,
 - the output is customer-safe and includes asset, visit date, findings, actions taken, parts fitted when reliable, outstanding items or recommendations, and time on site when available,
 - the CLI writes structured JSONL and readable Markdown summaries cleanly,
 - material conflicts and incomplete data are handled conservatively,
