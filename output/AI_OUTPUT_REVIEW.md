@@ -24,7 +24,7 @@ Evidence cases:
 
 ## Tests and performance
 
-`pytest -q` passes 29 summarizer tests. The CLI processes the 20-record JSONL input
+`pytest -q` passes 12 focused summarizer tests. The CLI processes the 20-record JSONL input
 in one streaming pass and produces exactly 20 output lines. The deterministic
 fallback is used when no model credentials are configured.
 

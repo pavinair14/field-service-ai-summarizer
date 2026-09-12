@@ -18,6 +18,7 @@ def read_report_records(
             if not line.strip():
                 continue
 
+            raw_report: object = None
             try:
                 raw_report = json.loads(line)
                 report = FieldServiceReport.model_validate(raw_report)
@@ -25,12 +26,9 @@ def read_report_records(
             except (json.JSONDecodeError, TypeError, ValueError):
                 raw_id = "unknown"
                 raw_asset = "Unknown asset"
-                try:
-                    if isinstance(raw_report, dict):
-                        raw_id = str(raw_report.get("report_id") or "unknown")
-                        raw_asset = str(raw_report.get("asset") or "Unknown asset")
-                except UnboundLocalError:
-                    pass
+                if isinstance(raw_report, dict):
+                    raw_id = str(raw_report.get("report_id") or "unknown")
+                    raw_asset = str(raw_report.get("asset") or "Unknown asset")
                 yield line_number, InvalidReport(
                     report_id=raw_id,
                     asset=raw_asset,

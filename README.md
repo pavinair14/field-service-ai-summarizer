@@ -90,7 +90,7 @@ pytest -q
 python run_summarizer.py
 ```
 
-Current verification: 29 summarizer tests pass; the CLI processes all 20
+Current verification: 12 focused summarizer tests pass; the CLI processes all 20
 supplied reports as 16 complete, 2 incomplete, and 2 unclear results. The
 known cases are FSR-3005 and FSR-3006 for contradictions, FSR-3007 and
 FSR-3008 for insufficient evidence, FSR-3003 and FSR-3014 for withheld
